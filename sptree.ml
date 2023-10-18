@@ -1,5 +1,9 @@
 (** Handling data structures **)
 
+(* Trees are represented using (sorted) lists of neighbors, where the
+   labels of the nodes follow the cyclic order of the convex hull. *)
+
+
 (* insertion in sorted list *)
 let rec insert t=function
   | a::q when t>a -> a::insert t q
@@ -160,4 +164,4 @@ let bfs m t =
 
 let _ =
   let dist = bfs m_adj (find trees [|[1;3];[0];[3];[0;2;7];[5;7];[4];[7];[3;4;6]|]) in
-  dist.(find trees [|[1];[0;6];[3;5;6];[2];[5];[2;4];[1;2;7];[6]|])
+  Printf.printf "The distance is %d.\n%!" dist.(find trees [|[1];[0;6];[3;5;6];[2];[5];[2;4];[1;2;7];[6]|])
